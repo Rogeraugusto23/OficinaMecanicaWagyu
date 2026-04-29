@@ -1,0 +1,140 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\roger\\OneDrive\\\u00C1rea de Trabalho\\TESTE1\\Teste1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F7392C-BC88-455C-8E61-CF054DC480E6}|Teste1.csproj|c:\\users\\roger\\onedrive\\\u00E1rea de trabalho\\teste1\\teste1\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F7392C-BC88-455C-8E61-CF054DC480E6}|Teste1.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F7392C-BC88-455C-8E61-CF054DC480E6}|Teste1.csproj|c:\\users\\roger\\onedrive\\\u00E1rea de trabalho\\teste1\\teste1\\domain\\entities\\servicoitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F7392C-BC88-455C-8E61-CF054DC480E6}|Teste1.csproj|solutionrelative:domain\\entities\\servicoitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F7392C-BC88-455C-8E61-CF054DC480E6}|Teste1.csproj|c:\\users\\roger\\onedrive\\\u00E1rea de trabalho\\teste1\\teste1\\domain\\entities\\pecaitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F7392C-BC88-455C-8E61-CF054DC480E6}|Teste1.csproj|solutionrelative:domain\\entities\\pecaitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F7392C-BC88-455C-8E61-CF054DC480E6}|Teste1.csproj|c:\\users\\roger\\onedrive\\\u00E1rea de trabalho\\teste1\\teste1\\domain\\enums\\statusordemservico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F7392C-BC88-455C-8E61-CF054DC480E6}|Teste1.csproj|solutionrelative:domain\\enums\\statusordemservico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F7392C-BC88-455C-8E61-CF054DC480E6}|Teste1.csproj|c:\\users\\roger\\onedrive\\\u00E1rea de trabalho\\teste1\\teste1\\domain\\entities\\ordemservico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F7392C-BC88-455C-8E61-CF054DC480E6}|Teste1.csproj|solutionrelative:domain\\entities\\ordemservico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F7392C-BC88-455C-8E61-CF054DC480E6}|Teste1.csproj|c:\\users\\roger\\onedrive\\\u00E1rea de trabalho\\teste1\\teste1\\domain\\valueobjects\\cpf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F7392C-BC88-455C-8E61-CF054DC480E6}|Teste1.csproj|solutionrelative:domain\\valueobjects\\cpf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F7392C-BC88-455C-8E61-CF054DC480E6}|Teste1.csproj|c:\\users\\roger\\onedrive\\\u00E1rea de trabalho\\teste1\\teste1\\infrastruture\\data\\oficinadbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F7392C-BC88-455C-8E61-CF054DC480E6}|Teste1.csproj|solutionrelative:infrastruture\\data\\oficinadbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\roger\\OneDrive\\\u00C1rea de Trabalho\\TESTE1\\Teste1\\API\\Program.cs",
+              "RelativeDocumentMoniker": "API\\Program.cs",
+              "ToolTip": "C:\\Users\\roger\\OneDrive\\\u00C1rea de Trabalho\\TESTE1\\Teste1\\API\\Program.cs",
+              "RelativeToolTip": "API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T01:30:25.759Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OficinaDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\roger\\OneDrive\\\u00C1rea de Trabalho\\TESTE1\\Teste1\\Infrastruture\\Data\\OficinaDbContext.cs",
+              "RelativeDocumentMoniker": "Infrastruture\\Data\\OficinaDbContext.cs",
+              "ToolTip": "C:\\Users\\roger\\OneDrive\\\u00C1rea de Trabalho\\TESTE1\\Teste1\\Infrastruture\\Data\\OficinaDbContext.cs",
+              "RelativeToolTip": "Infrastruture\\Data\\OficinaDbContext.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAAA4AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:27:13.823Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Cpf.cs",
+              "DocumentMoniker": "C:\\Users\\roger\\OneDrive\\\u00C1rea de Trabalho\\TESTE1\\Teste1\\Domain\\ValueObjects\\Cpf.cs",
+              "RelativeDocumentMoniker": "Domain\\ValueObjects\\Cpf.cs",
+              "ToolTip": "C:\\Users\\roger\\OneDrive\\\u00C1rea de Trabalho\\TESTE1\\Teste1\\Domain\\ValueObjects\\Cpf.cs",
+              "RelativeToolTip": "Domain\\ValueObjects\\Cpf.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:20:59.163Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OrdemServico.cs",
+              "DocumentMoniker": "C:\\Users\\roger\\OneDrive\\\u00C1rea de Trabalho\\TESTE1\\Teste1\\Domain\\Entities\\OrdemServico.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\OrdemServico.cs",
+              "ToolTip": "C:\\Users\\roger\\OneDrive\\\u00C1rea de Trabalho\\TESTE1\\Teste1\\Domain\\Entities\\OrdemServico.cs",
+              "RelativeToolTip": "Domain\\Entities\\OrdemServico.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAA3wEAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:08:41.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StatusOrdemServico.cs",
+              "DocumentMoniker": "C:\\Users\\roger\\OneDrive\\\u00C1rea de Trabalho\\TESTE1\\Teste1\\Domain\\Enums\\StatusOrdemServico.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\StatusOrdemServico.cs",
+              "ToolTip": "C:\\Users\\roger\\OneDrive\\\u00C1rea de Trabalho\\TESTE1\\Teste1\\Domain\\Enums\\StatusOrdemServico.cs",
+              "RelativeToolTip": "Domain\\Enums\\StatusOrdemServico.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:07:19.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PecaItem.cs",
+              "DocumentMoniker": "C:\\Users\\roger\\OneDrive\\\u00C1rea de Trabalho\\TESTE1\\Teste1\\Domain\\Entities\\PecaItem.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\PecaItem.cs",
+              "ToolTip": "C:\\Users\\roger\\OneDrive\\\u00C1rea de Trabalho\\TESTE1\\Teste1\\Domain\\Entities\\PecaItem.cs",
+              "RelativeToolTip": "Domain\\Entities\\PecaItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:05:38.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ServicoItem.cs",
+              "DocumentMoniker": "C:\\Users\\roger\\OneDrive\\\u00C1rea de Trabalho\\TESTE1\\Teste1\\Domain\\Entities\\ServicoItem.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\ServicoItem.cs",
+              "ToolTip": "C:\\Users\\roger\\OneDrive\\\u00C1rea de Trabalho\\TESTE1\\Teste1\\Domain\\Entities\\ServicoItem.cs",
+              "RelativeToolTip": "Domain\\Entities\\ServicoItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:04:24.135Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
