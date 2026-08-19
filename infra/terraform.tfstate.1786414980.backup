@@ -1,0 +1,598 @@
+{
+  "version": 4,
+  "terraform_version": "1.15.8",
+  "serial": 7,
+  "lineage": "e062bd46-6786-d549-330a-bcb9b6fa47d6",
+  "outputs": {
+    "api_local_url": {
+      "value": "http://localhost:8080  (rode: kubectl -n oficina-wagyu port-forward svc/oficina-api 8080:80)",
+      "type": "string"
+    },
+    "cluster_name": {
+      "value": "oficina-wagyu",
+      "type": "string"
+    },
+    "kubeconfig_path": {
+      "value": "C:\\Users\\roger\\OneDrive\\Área de Trabalho\\FASE 2\\OficinaMecanicaWagyu-fase2-parcial\\OficinaMecanicaWagyu-main\\infra\\oficina-wagyu-config",
+      "type": "string"
+    },
+    "namespace": {
+      "value": "oficina-wagyu",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "kind_cluster",
+      "name": "oficina",
+      "provider": "provider[\"registry.terraform.io/tehcyx/kind\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "client_certificate": "-----BEGIN CERTIFICATE-----\nMIIDKTCCAhGgAwIBAgIIep8Ybw18hF0wDQYJKoZIhvcNAQELBQAwFTETMBEGA1UE\nAxMKa3ViZXJuZXRlczAeFw0yNjA4MDUwMjEzMzFaFw0yNzA4MDUwMjE4MzFaMDwx\nHzAdBgNVBAoTFmt1YmVhZG06Y2x1c3Rlci1hZG1pbnMxGTAXBgNVBAMTEGt1YmVy\nbmV0ZXMtYWRtaW4wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDBUtP8\n8K3eJRpFU3nKIMOkglxVS78/+bDYA2hrQnecxLWOln/IX3RAO3BI3kGzIlFtYeO1\n6k1tVTjxiQ10VVrBwOXJQwQ5GS7LB7hHeO36ourHMbVmPsNpFEgaLKHr72wXbDr2\nc5HRpze9UwZiZsU21dFnKQIAW2dQ/MPGumSJZCyI0wDu9ozuxOLt3ZH/Ao6n5D+Q\nckBZWg+H2WB1Mx2dCpdJxYYMCmPfwhQkfb2gStSzEp198+w7adBV7aP6SGvtD81p\nt7ycFlwmisW0mIgfWy6BxSQ8i3V6k8El5S2nCkqGTFKU2QMMqGr+V3fvSGEaNyq3\nA9SPIn63Wh5jm1BHAgMBAAGjVjBUMA4GA1UdDwEB/wQEAwIFoDATBgNVHSUEDDAK\nBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFMqiewRJXYfvPqtG\nqB5CoS9QpGyoMA0GCSqGSIb3DQEBCwUAA4IBAQB50HSvfWW8J5SDTTJ5gJ5oXDiS\nUKgenZRIniqjFnMkKMbQ36GL+NFmg5js9sj21kuJDl6sHEGhkltUrBV9bG2z7FXB\nIxIqTmpZxLCaHd++228M9vt83xufpJqKsBdVd9ggn/ipg3prfFNdNI1ioo2pBaLx\nJlmtBbJq0LE3l57BSRyBEfj3l55a46irGvvRsa/p4JEOuOFYq/f0mYes1r2TavGP\nDG6BRvMVplDUB5xCzQAQn/7k3wBMwboT3LlyXQyXWkP69rJaR/dWJ2UXgP1miPGG\nh8OIS5eASCDV/RKlOZblxHyTwMKeO8WDHIOOoFkR+7tkL3EfqofGCKLJgiPN\n-----END CERTIFICATE-----\n",
+            "client_key": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAwVLT/PCt3iUaRVN5yiDDpIJcVUu/P/mw2ANoa0J3nMS1jpZ/\nyF90QDtwSN5BsyJRbWHjtepNbVU48YkNdFVawcDlyUMEORkuywe4R3jt+qLqxzG1\nZj7DaRRIGiyh6+9sF2w69nOR0ac3vVMGYmbFNtXRZykCAFtnUPzDxrpkiWQsiNMA\n7vaM7sTi7d2R/wKOp+Q/kHJAWVoPh9lgdTMdnQqXScWGDApj38IUJH29oErUsxKd\nffPsO2nQVe2j+khr7Q/Nabe8nBZcJorFtJiIH1sugcUkPIt1epPBJeUtpwpKhkxS\nlNkDDKhq/ld370hhGjcqtwPUjyJ+t1oeY5tQRwIDAQABAoIBABxdmt0yM1C1APXL\nGcOeqxYoSoP5aUZpzJjlZxzV09ccxcb2LimoV9ZU4lTOx7URBAGYq2C10EaKiqBm\nC6NWIsrrEsxFGQmHuGXx7AgQplpwLSKtGIC4FNQGNc4hXmDP8Hw/VSd0LaEld/g/\nhmBJ1AYHuYH5cmG7B53KeK9gCgBegQdbe5nMtbKm+n4LXe0A2aAxvrNgvp97ACK1\noYPKsUbKqD9xEgtkH35TlZuqD2BwoipBuFBmuOIuP1TTIw0TAonZNUhhfBDUVnya\ns+vDIyyq2yApW5RwEAyFBw/9PYPRhAl6HpPB+kkOOEyBqQZyq3cwQH/0+I4jI7UU\nzzTmhwECgYEA0lcE6fGpgs0i6RJm67Q0I1qpV3kcS9ccu0Zs/ZxO6y6zs7VX782Z\nyP5d67zGempZUj5rfx+9QIeNFB2MWaQURODiJG8TSvGpoKJi4zu8+6dTNglvbc8v\nxH625j79T0Zgg7I9ui/vZ4qXBhja8gqrQrTy9JU2Pa2CKHuzmhO+/0kCgYEA60ot\nbORfy4hgdGYrXM4ImUb2yG8Y/XKmH+yBJUI0JFW9/v+FZqGGCf1sJXGFjsBhCnjP\nFxH+Mn5thTClqOS85RugQ/wqgIM52U7hKW9MdJ7Ye18VgarP26ulz7GL7a8Qpim5\nMIRrJoCQSw2v6qEAUNJs5gvvA2rmJQd0/eCIgw8CgYEAgT/FnjfIUL7a99s98RJP\ng3X/Xufl0liBqDZTXNfCytNsyz3gplNxb0eW0Pe0Ap78+gOvLHOFaHSi5Txu9NpV\nNin17Ctw8HllIXcHSth3fS/Jewf7N7+7e4PdwcftAdyeC+7n7VPtSXOo768wQtD5\ngckNDevuY6INu/CfYUtG7zkCgYBzB4i9u8i5kKrXPTvl2zSI+xCbXPUys2JUKSPa\nO0uSl/iTOgjV7BHDwImmpKFO8O6AWB+mf71uojCY9PeIYouW1rK7igSdX4pgmxep\nUihmu2HKrumswv1rv7cImxx1zyisk6ld9t8Lq77fcomWg6/L05Q5w4vOd+ycHdEs\nbSFQMQKBgCyOM4Bd9DST4U62/9AeF7mZiTs4O2GplmKshKwLbdTznsIdHpNu/1Ni\nLkU0oONr1rJPFSkKOj6KmfWs31Azw+hnDXD2k4dg0MKUjHN+h7AFypZZU3X6zFGU\nvgNJErskJ2no2tKrN15gYT20Ai+DtbGojz/QEycm7aN0YKnQ+vnA\n-----END RSA PRIVATE KEY-----\n",
+            "cluster_ca_certificate": "-----BEGIN CERTIFICATE-----\nMIIDBTCCAe2gAwIBAgIIdqwCFJzMZdMwDQYJKoZIhvcNAQELBQAwFTETMBEGA1UE\nAxMKa3ViZXJuZXRlczAeFw0yNjA4MDUwMjEzMzFaFw0zNjA4MDIwMjE4MzFaMBUx\nEzARBgNVBAMTCmt1YmVybmV0ZXMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK\nAoIBAQCeWlMb/2BDen4J9/GnSmlptUy2g4dAgTTQqvI+jZBoDoQHIWzOeCdxTo2b\nlFtQBxFm4V1vt7kh0w/wh0QqWIaSrKOJQMbeCj7I/lTyS7O5hWAtSkADkECchDXI\neouMZLBCcN6NOdfOQz5OF5c/E8k0kyj20+nViVd33Z0eyAToy1VawF5nVzowjHwM\n7ouFYSwYz/K9CGEK3dK6jTJi28pYCkaTU9wx6vPXX7dzBNhzy4z+JrZISPnX0hlK\nGzYYtoTmbhsd2vImrQc9FiIkW6pWWk9Rx1egxVNlJrI1Sx0qF+T8X+rg5kwK2MzA\nn4quvz3AnAeSoJ/GM4Oxfe7PfqzjAgMBAAGjWTBXMA4GA1UdDwEB/wQEAwICpDAP\nBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBTKonsESV2H7z6rRqgeQqEvUKRsqDAV\nBgNVHREEDjAMggprdWJlcm5ldGVzMA0GCSqGSIb3DQEBCwUAA4IBAQBq9/ssUS8N\nxStqlwi6IP5bnWElnA5X9J0R7WSSDKhCpLpJSQk9R21MFhSNBsnV0CWBwihXrYLd\nDI2zNmU96ZJu4m+1/FMPLm7f1IwcC68a7afGvqWWWWGE1cbqiKZNK5R+7wZw3jr+\nFQEEYbaT/VYkoFr5wBUKl19+9VF9rL0dcb+afRTHXdtuHINNHrx/KhNHNEY4SzxO\n/0tX970xny3oY8R9HOMIrJqcdduT7jEW81AZdNeXoJaJzu7udok+j0TLPX286cRM\niTiS4NY22rwMWStxUfcdU1TIQ/iL/aHgubP1b0NCvneon9wOLZCdM/QT6FSbX3Q3\nysd01QGY2Nbs\n-----END CERTIFICATE-----\n",
+            "completed": true,
+            "endpoint": "https://127.0.0.1:51403",
+            "id": "oficina-wagyu-",
+            "kind_config": [
+              {
+                "api_version": "kind.x-k8s.io/v1alpha4",
+                "containerd_config_patches": null,
+                "feature_gates": null,
+                "kind": "Cluster",
+                "networking": [],
+                "node": [
+                  {
+                    "extra_mounts": [],
+                    "extra_port_mappings": [
+                      {
+                        "container_port": 30080,
+                        "host_port": 8080,
+                        "listen_address": "",
+                        "protocol": "TCP"
+                      }
+                    ],
+                    "image": "",
+                    "kubeadm_config_patches": null,
+                    "labels": null,
+                    "role": "control-plane"
+                  },
+                  {
+                    "extra_mounts": [],
+                    "extra_port_mappings": [],
+                    "image": "",
+                    "kubeadm_config_patches": null,
+                    "labels": null,
+                    "role": "worker"
+                  }
+                ],
+                "runtime_config": null
+              }
+            ],
+            "kubeconfig": "apiVersion: v1\nclusters:\n- cluster:\n    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURCVENDQWUyZ0F3SUJBZ0lJZHF3Q0ZKek1aZE13RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TmpBNE1EVXdNakV6TXpGYUZ3MHpOakE0TURJd01qRTRNekZhTUJVeApFekFSQmdOVkJBTVRDbXQxWW1WeWJtVjBaWE13Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLCkFvSUJBUUNlV2xNYi8yQkRlbjRKOS9HblNtbHB0VXkyZzRkQWdUVFFxdkkralpCb0RvUUhJV3pPZUNkeFRvMmIKbEZ0UUJ4Rm00VjF2dDdraDB3L3doMFFxV0lhU3JLT0pRTWJlQ2o3SS9sVHlTN081aFdBdFNrQURrRUNjaERYSQplb3VNWkxCQ2NONk5PZGZPUXo1T0Y1Yy9FOGswa3lqMjArblZpVmQzM1owZXlBVG95MVZhd0Y1blZ6b3dqSHdNCjdvdUZZU3dZei9LOUNHRUszZEs2alRKaTI4cFlDa2FUVTl3eDZ2UFhYN2R6Qk5oenk0eitKclpJU1BuWDBobEsKR3pZWXRvVG1iaHNkMnZJbXJRYzlGaUlrVzZwV1drOVJ4MWVneFZObEpySTFTeDBxRitUOFgrcmc1a3dLMk16QQpuNHF1dnozQW5BZVNvSi9HTTRPeGZlN1BmcXpqQWdNQkFBR2pXVEJYTUE0R0ExVWREd0VCL3dRRUF3SUNwREFQCkJnTlZIUk1CQWY4RUJUQURBUUgvTUIwR0ExVWREZ1FXQkJUS29uc0VTVjJIN3o2clJxZ2VRcUV2VUtSc3FEQVYKQmdOVkhSRUVEakFNZ2dwcmRXSmxjbTVsZEdWek1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQnE5L3NzVVM4Tgp4U3RxbHdpNklQNWJuV0VsbkE1WDlKMFI3V1NTREtoQ3BMcEpTUWs5UjIxTUZoU05Cc25WMENXQndpaFhyWUxkCkRJMnpObVU5NlpKdTRtKzEvRk1QTG03ZjFJd2NDNjhhN2FmR3ZxV1dXV0dFMWNicWlLWk5LNVIrN3dadzNqcisKRlFFRVliYVQvVllrb0ZyNXdCVUtsMTkrOVZGOXJMMGRjYithZlJUSFhkdHVISU5OSHJ4L0toTkhORVk0U3p4TwovMHRYOTcweG55M29ZOFI5SE9NSXJKcWNkZHVUN2pFVzgxQVpkTmVYb0phSnp1N3Vkb2srajBUTFBYMjg2Y1JNCmlUaVM0TlkyMnJ3TVdTdHhVZmNkVTFUSVEvaUwvYUhndWJQMWIwTkN2bmVvbjl3T0xaQ2RNL1FUNkZTYlgzUTMKeXNkMDFRR1kyTmJzCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\n    server: https://127.0.0.1:51403\n  name: kind-oficina-wagyu\ncontexts:\n- context:\n    cluster: kind-oficina-wagyu\n    user: kind-oficina-wagyu\n  name: kind-oficina-wagyu\ncurrent-context: kind-oficina-wagyu\nkind: Config\nusers:\n- name: kind-oficina-wagyu\n  user:\n    client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURLVENDQWhHZ0F3SUJBZ0lJZXA4WWJ3MThoRjB3RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TmpBNE1EVXdNakV6TXpGYUZ3MHlOekE0TURVd01qRTRNekZhTUR3eApIekFkQmdOVkJBb1RGbXQxWW1WaFpHMDZZMngxYzNSbGNpMWhaRzFwYm5NeEdUQVhCZ05WQkFNVEVHdDFZbVZ5CmJtVjBaWE10WVdSdGFXNHdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFEQlV0UDgKOEszZUpScEZVM25LSU1Pa2dseFZTNzgvK2JEWUEyaHJRbmVjeExXT2xuL0lYM1JBTzNCSTNrR3pJbEZ0WWVPMQo2azF0VlRqeGlRMTBWVnJCd09YSlF3UTVHUzdMQjdoSGVPMzZvdXJITWJWbVBzTnBGRWdhTEtIcjcyd1hiRHIyCmM1SFJwemU5VXdaaVpzVTIxZEZuS1FJQVcyZFEvTVBHdW1TSlpDeUkwd0R1OW96dXhPTHQzWkgvQW82bjVEK1EKY2tCWldnK0gyV0IxTXgyZENwZEp4WVlNQ21QZndoUWtmYjJnU3RTekVwMTk4K3c3YWRCVjdhUDZTR3Z0RDgxcAp0N3ljRmx3bWlzVzBtSWdmV3k2QnhTUThpM1Y2azhFbDVTMm5Da3FHVEZLVTJRTU1xR3IrVjNmdlNHRWFOeXEzCkE5U1BJbjYzV2g1am0xQkhBZ01CQUFHalZqQlVNQTRHQTFVZER3RUIvd1FFQXdJRm9EQVRCZ05WSFNVRUREQUsKQmdnckJnRUZCUWNEQWpBTUJnTlZIUk1CQWY4RUFqQUFNQjhHQTFVZEl3UVlNQmFBRk1xaWV3UkpYWWZ2UHF0RwpxQjVDb1M5UXBHeW9NQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUI1MEhTdmZXVzhKNVNEVFRKNWdKNW9YRGlTClVLZ2VuWlJJbmlxakZuTWtLTWJRMzZHTCtORm1nNWpzOXNqMjFrdUpEbDZzSEVHaGtsdFVyQlY5YkcyejdGWEIKSXhJcVRtcFp4TENhSGQrKzIyOE05dnQ4M3h1ZnBKcUtzQmRWZDlnZ24vaXBnM3ByZkZOZE5JMWlvbzJwQmFMeApKbG10QmJKcTBMRTNsNTdCU1J5QkVmajNsNTVhNDZpckd2dlJzYS9wNEpFT3VPRllxL2YwbVllczFyMlRhdkdQCkRHNkJSdk1WcGxEVUI1eEN6UUFRbi83azN3Qk13Ym9UM0xseVhReVhXa1A2OXJKYVIvZFdKMlVYZ1AxbWlQR0cKaDhPSVM1ZUFTQ0RWL1JLbE9aYmx4SHlUd01LZU84V0RISU9Pb0ZrUis3dGtMM0VmcW9mR0NLTEpnaVBOCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\n    client-key-data: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBd1ZMVC9QQ3QzaVVhUlZONXlpRERwSUpjVlV1L1AvbXcyQU5vYTBKM25NUzFqcFovCnlGOTBRRHR3U041QnN5SlJiV0hqdGVwTmJWVTQ4WWtOZEZWYXdjRGx5VU1FT1JrdXl3ZTRSM2p0K3FMcXh6RzEKWmo3RGFSUklHaXloNis5c0YydzY5bk9SMGFjM3ZWTUdZbWJGTnRYUlp5a0NBRnRuVVB6RHhycGtpV1FzaU5NQQo3dmFNN3NUaTdkMlIvd0tPcCtRL2tISkFXVm9QaDlsZ2RUTWRuUXFYU2NXR0RBcGozOElVSkgyOW9FclVzeEtkCmZmUHNPMm5RVmUyaitraHI3US9OYWJlOG5CWmNKb3JGdEppSUgxc3VnY1VrUEl0MWVwUEJKZVV0cHdwS2hreFMKbE5rRERLaHEvbGQzNzBoaEdqY3F0d1BVanlKK3Qxb2VZNXRRUndJREFRQUJBb0lCQUJ4ZG10MHlNMUMxQVBYTApHY09lcXhZb1NvUDVhVVpwekpqbFp4elYwOWNjeGNiMkxpbW9WOVpVNGxUT3g3VVJCQUdZcTJDMTBFYUtpcUJtCkM2TldJc3JyRXN4RkdRbUh1R1h4N0FnUXBscHdMU0t0R0lDNEZOUUdOYzRoWG1EUDhIdy9WU2QwTGFFbGQvZy8KaG1CSjFBWUh1WUg1Y21HN0I1M0tlSzlnQ2dCZWdRZGJlNW5NdGJLbStuNExYZTBBMmFBeHZyTmd2cDk3QUNLMQpvWVBLc1ViS3FEOXhFZ3RrSDM1VGxadXFEMkJ3b2lwQnVGQm11T0l1UDFUVEl3MFRBb25aTlVoaGZCRFVWbnlhCnMrdkRJeXlxMnlBcFc1UndFQXlGQncvOVBZUFJoQWw2SHBQQitra09PRXlCcVFaeXEzY3dRSC8wK0k0akk3VVUKenpUbWh3RUNnWUVBMGxjRTZmR3BnczBpNlJKbTY3UTBJMXFwVjNrY1M5Y2N1MFpzL1p4TzZ5NnpzN1ZYNzgyWgp5UDVkNjd6R2VtcFpVajVyZngrOVFJZU5GQjJNV2FRVVJPRGlKRzhUU3ZHcG9LSmk0enU4KzZkVE5nbHZiYzh2CnhINjI1ajc5VDBaZ2c3STl1aS92WjRxWEJoamE4Z3FyUXJUeTlKVTJQYTJDS0h1em1oTysvMGtDZ1lFQTYwb3QKYk9SZnk0aGdkR1lyWE00SW1VYjJ5RzhZL1hLbUgreUJKVUkwSkZXOS92K0ZacUdHQ2Yxc0pYR0Zqc0JoQ25qUApGeEgrTW41dGhUQ2xxT1M4NVJ1Z1Evd3FnSU01MlU3aEtXOU1kSjdZZTE4VmdhclAyNnVsejdHTDdhOFFwaW01Ck1JUnJKb0NRU3cydjZxRUFVTkpzNWd2dkEycm1KUWQwL2VDSWd3OENnWUVBZ1QvRm5qZklVTDdhOTlzOThSSlAKZzNYL1h1ZmwwbGlCcURaVFhOZkN5dE5zeXozZ3BsTnhiMGVXMFBlMEFwNzgrZ092TEhPRmFIU2k1VHh1OU5wVgpOaW4xN0N0dzhIbGxJWGNIU3RoM2ZTL0pld2Y3TjcrN2U0UGR3Y2Z0QWR5ZUMrN243VlB0U1hPbzc2OHdRdEQ1Cmdja05EZXZ1WTZJTnUvQ2ZZVXRHN3prQ2dZQnpCNGk5dThpNWtLclhQVHZsMnpTSSt4Q2JYUFV5czJKVUtTUGEKTzB1U2wvaVRPZ2pWN0JIRHdJbW1wS0ZPOE82QVdCK21mNzF1b2pDWTlQZUlZb3VXMXJLN2lnU2RYNHBnbXhlcApVaWhtdTJIS3J1bXN3djFydjdjSW14eDF6eWlzazZsZDl0OExxNzdmY29tV2c2L0wwNVE1dzR2T2QreWNIZEVzCmJTRlFNUUtCZ0N5T000QmQ5RFNUNFU2Mi85QWVGN21aaVRzNE8yR3BsbUtzaEt3TGJkVHpuc0lkSHBOdS8xTmkKTGtVMG9PTnIxckpQRlNrS09qNkttZldzMzFBencraG5EWEQyazRkZzBNS1VqSE4raDdBRnlwWlpVM1g2ekZHVQp2Z05KRXJza0oybm8ydEtyTjE1Z1lUMjBBaStEdGJHb2p6L1FFeWNtN2FOMFlLblErdm5BCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==\n",
+            "kubeconfig_path": "C:\\Users\\roger\\OneDrive\\Área de Trabalho\\FASE 2\\OficinaMecanicaWagyu-fase2-parcial\\OficinaMecanicaWagyu-main\\infra\\oficina-wagyu-config",
+            "name": "oficina-wagyu",
+            "node_image": null,
+            "timeouts": null,
+            "wait_for_ready": true
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjMwMDAwMDAwMDAwMH19"
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "kubernetes_config_map",
+      "name": "oficina_api_config",
+      "provider": "provider[\"registry.terraform.io/hashicorp/kubernetes\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "binary_data": null,
+            "data": {
+              "ASPNETCORE_ENVIRONMENT": "Production",
+              "ASPNETCORE_URLS": "http://+:8080",
+              "SQLSERVER_DATABASE": "OficinaMecanicaDB",
+              "SQLSERVER_HOST": "oficina-sqlserver"
+            },
+            "id": "oficina-wagyu/oficina-api-config",
+            "immutable": false,
+            "metadata": [
+              {
+                "annotations": null,
+                "generate_name": "",
+                "generation": 0,
+                "labels": null,
+                "name": "oficina-api-config",
+                "namespace": "oficina-wagyu",
+                "resource_version": "610",
+                "uid": "fd1720ca-d3fd-4b0c-8656-d9716662b933"
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 1,
+          "identity": {
+            "api_version": "v1",
+            "kind": "ConfigMap",
+            "name": "oficina-api-config",
+            "namespace": "oficina-wagyu"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "kind_cluster.oficina",
+            "kubernetes_namespace.oficina"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "kubernetes_namespace",
+      "name": "oficina",
+      "provider": "provider[\"registry.terraform.io/hashicorp/kubernetes\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "oficina-wagyu",
+            "metadata": [
+              {
+                "annotations": null,
+                "generate_name": "",
+                "generation": 0,
+                "labels": null,
+                "name": "oficina-wagyu",
+                "resource_version": "599",
+                "uid": "0d3fc673-e8d7-4a63-b000-078a9b37178a"
+              }
+            ],
+            "timeouts": null,
+            "wait_for_default_service_account": false
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 1,
+          "identity": {
+            "api_version": "v1",
+            "kind": "Namespace",
+            "name": "oficina-wagyu"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiZGVsZXRlIjozMDAwMDAwMDAwMDB9fQ==",
+          "dependencies": [
+            "kind_cluster.oficina"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "kubernetes_secret",
+      "name": "oficina_api_secret",
+      "provider": "provider[\"registry.terraform.io/hashicorp/kubernetes\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "binary_data": null,
+            "binary_data_wo": null,
+            "binary_data_wo_revision": null,
+            "data": {
+              "ConnectionStrings__DefaultConnection": "Server=oficina-sqlserver,1433;Database=OficinaMecanicaDB;User Id=sa;Password=Oficina@1234;TrustServerCertificate=True;MultipleActiveResultSets=true",
+              "EmailWebhook__Secret": "webhook-secret-local-dev-troque-em-producao",
+              "SA_PASSWORD": "Oficina@1234"
+            },
+            "data_wo": null,
+            "data_wo_revision": null,
+            "id": "oficina-wagyu/oficina-api-secret",
+            "immutable": false,
+            "metadata": [
+              {
+                "annotations": null,
+                "generate_name": "",
+                "generation": 0,
+                "labels": null,
+                "name": "oficina-api-secret",
+                "namespace": "oficina-wagyu",
+                "resource_version": "609",
+                "uid": "6227b010-9875-49c8-9932-f5e24b10f083"
+              }
+            ],
+            "timeouts": null,
+            "type": "Opaque",
+            "wait_for_service_account_token": true
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "binary_data"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "data"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "data"
+              },
+              {
+                "type": "index",
+                "value": {
+                  "value": "ConnectionStrings__DefaultConnection",
+                  "type": "string"
+                }
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "data"
+              },
+              {
+                "type": "index",
+                "value": {
+                  "value": "EmailWebhook__Secret",
+                  "type": "string"
+                }
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "data"
+              },
+              {
+                "type": "index",
+                "value": {
+                  "value": "SA_PASSWORD",
+                  "type": "string"
+                }
+              }
+            ]
+          ],
+          "identity_schema_version": 1,
+          "identity": {
+            "api_version": "v1",
+            "kind": "Secret",
+            "name": "oficina-api-secret",
+            "namespace": "oficina-wagyu"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMH19",
+          "dependencies": [
+            "kind_cluster.oficina",
+            "kubernetes_namespace.oficina"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "kubernetes_service",
+      "name": "sqlserver",
+      "provider": "provider[\"registry.terraform.io/hashicorp/kubernetes\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "id": "oficina-wagyu/oficina-sqlserver",
+            "metadata": [
+              {
+                "annotations": null,
+                "generate_name": "",
+                "generation": 0,
+                "labels": null,
+                "name": "oficina-sqlserver",
+                "namespace": "oficina-wagyu",
+                "resource_version": "606",
+                "uid": "2a2af992-bdfb-4011-8ec0-63603a2a7b94"
+              }
+            ],
+            "spec": [
+              {
+                "allocate_load_balancer_node_ports": true,
+                "cluster_ip": "None",
+                "cluster_ips": [
+                  "None"
+                ],
+                "external_ips": null,
+                "external_name": "",
+                "external_traffic_policy": "",
+                "health_check_node_port": 0,
+                "internal_traffic_policy": "Cluster",
+                "ip_families": [
+                  "IPv4"
+                ],
+                "ip_family_policy": "SingleStack",
+                "load_balancer_class": "",
+                "load_balancer_ip": "",
+                "load_balancer_source_ranges": null,
+                "port": [
+                  {
+                    "app_protocol": "",
+                    "name": "",
+                    "node_port": 0,
+                    "port": 1433,
+                    "protocol": "TCP",
+                    "target_port": "1433"
+                  }
+                ],
+                "publish_not_ready_addresses": false,
+                "selector": {
+                  "app": "oficina-sqlserver"
+                },
+                "session_affinity": "None",
+                "session_affinity_config": [],
+                "type": "ClusterIP"
+              }
+            ],
+            "status": [
+              {
+                "load_balancer": [
+                  {
+                    "ingress": []
+                  }
+                ]
+              }
+            ],
+            "timeouts": null,
+            "wait_for_load_balancer": true
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 1,
+          "identity": {
+            "api_version": "v1",
+            "kind": "Service",
+            "name": "oficina-sqlserver",
+            "namespace": "oficina-wagyu"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDB9LCJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "kind_cluster.oficina",
+            "kubernetes_namespace.oficina"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "kubernetes_stateful_set",
+      "name": "sqlserver",
+      "provider": "provider[\"registry.terraform.io/hashicorp/kubernetes\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "id": "oficina-wagyu/oficina-sqlserver",
+            "metadata": [
+              {
+                "annotations": null,
+                "generate_name": "",
+                "generation": 1,
+                "labels": null,
+                "name": "oficina-sqlserver",
+                "namespace": "oficina-wagyu",
+                "resource_version": "869",
+                "uid": "c8bffc64-5c36-4d21-a7b1-9add5938a41f"
+              }
+            ],
+            "spec": [
+              {
+                "min_ready_seconds": 0,
+                "persistent_volume_claim_retention_policy": [
+                  {
+                    "when_deleted": "Retain",
+                    "when_scaled": "Retain"
+                  }
+                ],
+                "pod_management_policy": "OrderedReady",
+                "replicas": "1",
+                "revision_history_limit": 0,
+                "selector": [
+                  {
+                    "match_expressions": [],
+                    "match_labels": {
+                      "app": "oficina-sqlserver"
+                    }
+                  }
+                ],
+                "service_name": "oficina-sqlserver",
+                "template": [
+                  {
+                    "metadata": [
+                      {
+                        "annotations": null,
+                        "generate_name": "",
+                        "generation": 0,
+                        "labels": {
+                          "app": "oficina-sqlserver"
+                        },
+                        "name": "",
+                        "namespace": "",
+                        "resource_version": "",
+                        "uid": ""
+                      }
+                    ],
+                    "spec": [
+                      {
+                        "active_deadline_seconds": 0,
+                        "affinity": [],
+                        "automount_service_account_token": true,
+                        "container": [
+                          {
+                            "args": null,
+                            "command": null,
+                            "env": [
+                              {
+                                "name": "ACCEPT_EULA",
+                                "value": "Y",
+                                "value_from": []
+                              },
+                              {
+                                "name": "MSSQL_SA_PASSWORD",
+                                "value": "",
+                                "value_from": [
+                                  {
+                                    "config_map_key_ref": [],
+                                    "field_ref": [],
+                                    "resource_field_ref": [],
+                                    "secret_key_ref": [
+                                      {
+                                        "key": "SA_PASSWORD",
+                                        "name": "oficina-api-secret",
+                                        "optional": false
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "env_from": [],
+                            "image": "mcr.microsoft.com/mssql/server:2022-latest",
+                            "image_pull_policy": "IfNotPresent",
+                            "lifecycle": [],
+                            "liveness_probe": [],
+                            "name": "sqlserver",
+                            "port": [
+                              {
+                                "container_port": 1433,
+                                "host_ip": "",
+                                "host_port": 0,
+                                "name": "",
+                                "protocol": "TCP"
+                              }
+                            ],
+                            "readiness_probe": [],
+                            "resources": [
+                              {
+                                "limits": {
+                                  "cpu": "1",
+                                  "memory": "2Gi"
+                                },
+                                "requests": {
+                                  "cpu": "250m",
+                                  "memory": "1Gi"
+                                }
+                              }
+                            ],
+                            "security_context": [],
+                            "startup_probe": [],
+                            "stdin": false,
+                            "stdin_once": false,
+                            "termination_message_path": "/dev/termination-log",
+                            "termination_message_policy": "File",
+                            "tty": false,
+                            "volume_device": [],
+                            "volume_mount": [
+                              {
+                                "mount_path": "/var/opt/mssql",
+                                "mount_propagation": "None",
+                                "name": "sqlserver-data",
+                                "read_only": false,
+                                "sub_path": "",
+                                "sub_path_expr": ""
+                              }
+                            ],
+                            "working_dir": ""
+                          }
+                        ],
+                        "dns_config": [],
+                        "dns_policy": "ClusterFirst",
+                        "enable_service_links": true,
+                        "host_aliases": [],
+                        "host_ipc": false,
+                        "host_network": false,
+                        "host_pid": false,
+                        "hostname": "",
+                        "image_pull_secrets": [],
+                        "init_container": [],
+                        "node_name": "",
+                        "node_selector": null,
+                        "os": [],
+                        "priority_class_name": "",
+                        "readiness_gate": [],
+                        "restart_policy": "Always",
+                        "runtime_class_name": "",
+                        "scheduler_name": "default-scheduler",
+                        "security_context": [],
+                        "service_account_name": "",
+                        "share_process_namespace": false,
+                        "subdomain": "",
+                        "termination_grace_period_seconds": 30,
+                        "toleration": [],
+                        "topology_spread_constraint": [],
+                        "volume": []
+                      }
+                    ]
+                  }
+                ],
+                "update_strategy": [],
+                "volume_claim_template": [
+                  {
+                    "metadata": [
+                      {
+                        "annotations": null,
+                        "generate_name": "",
+                        "generation": 0,
+                        "labels": null,
+                        "name": "sqlserver-data",
+                        "namespace": "default",
+                        "resource_version": "",
+                        "uid": ""
+                      }
+                    ],
+                    "spec": [
+                      {
+                        "access_modes": [
+                          "ReadWriteOnce"
+                        ],
+                        "resources": [
+                          {
+                            "limits": null,
+                            "requests": {
+                              "storage": "2Gi"
+                            }
+                          }
+                        ],
+                        "selector": [],
+                        "storage_class_name": "",
+                        "volume_mode": "Filesystem",
+                        "volume_name": ""
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "timeouts": null,
+            "wait_for_rollout": true
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 1,
+          "identity": {
+            "api_version": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "oficina-sqlserver",
+            "namespace": "oficina-wagyu"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJyZWFkIjo2MDAwMDAwMDAwMDAsInVwZGF0ZSI6NjAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "kind_cluster.oficina",
+            "kubernetes_namespace.oficina",
+            "kubernetes_secret.oficina_api_secret"
+          ]
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

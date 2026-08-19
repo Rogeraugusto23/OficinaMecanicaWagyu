@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: oficina-api-config
+  namespace: oficina-wagyu
+data:
+  ASPNETCORE_ENVIRONMENT: "Production"
+  ASPNETCORE_URLS: "http://+:8080"
+  SQLSERVER_HOST: "oficina-sqlserver"
+  SQLSERVER_DATABASE: "OficinaMecanicaDB"

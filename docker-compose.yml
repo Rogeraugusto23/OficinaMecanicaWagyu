@@ -1,0 +1,34 @@
+﻿services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: oficina_sqlserver
+    environment:
+      SA_PASSWORD: "Oficina@1234"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P Oficina@1234 -Q 'SELECT 1' -No"]
+      interval: 15s
+      retries: 10
+      start_period: 45s
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: oficina_api
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=OficinaMecanicaDB;User Id=sa;Password=Oficina@1234;TrustServerCertificate=True;MultipleActiveResultSets=true
+      - EmailWebhook__Secret=TROCAR_EM_PRODUCAO_use_o_Secret_do_K8s   # ← adiciona essa linha
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+
+volumes:
+  sqlserver_data:
