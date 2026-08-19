@@ -2,3 +2,7 @@
 obj/
 .vs/
 *.user
+infra/.terraform/
+infra/terraform.tfstate
+infra/terraform.tfstate.backup
+infra/*.tfvars
