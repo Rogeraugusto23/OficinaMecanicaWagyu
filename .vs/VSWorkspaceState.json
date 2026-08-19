@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\OficinaMecanicaWagyu",
+    "\\OficinaMecanicaWagyu\\API",
+    "\\OficinaMecanicaWagyu\\Domain",
+    "\\OficinaMecanicaWagyu\\Domain\\Entities",
+    "\\OficinaMecanicaWagyu\\Domain\\Enums",
+    "\\OficinaMecanicaWagyu\\Domain\\Validators",
+    "\\OficinaMecanicaWagyu\\Domain\\ValueObjects",
+    "\\OficinaMecanicaWagyu\\Infrastructure",
+    "\\OficinaMecanicaWagyu\\Infrastructure\\Data"
+  ],
+  "SelectedNode": "\\OficinaMecanicaWagyu\\Domain\\Enums\\StatusOrdemServico.cs",
+  "PreviewInSolutionExplorer": false
+}
