@@ -1,0 +1,105 @@
+name: CI/CD - Oficina Mecânica Wagyu
+
+on:
+  push:
+    branches: [main, master, homologacao]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  # ─────────────────────────────────────────────────────────
+  # CI — roda em runner padrão da GitHub (nuvem)
+  # Build, testes automatizados e build da imagem Docker
+  # ─────────────────────────────────────────────────────────
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restaurar dependências (API)
+        run: dotnet restore OficinaMecanicaWagyu/OficinaMecanicaWagyu.csproj
+
+      - name: Build (API)
+        run: dotnet build OficinaMecanicaWagyu/OficinaMecanicaWagyu.csproj --configuration Release --no-restore
+
+      - name: Restaurar dependências (Testes)
+        run: dotnet restore OficinaMecanicaWagyu.Tests/OficinaMecanicaWagyu.Tests.csproj
+
+      - name: Executar testes automatizados
+        run: dotnet test OficinaMecanicaWagyu.Tests/OficinaMecanicaWagyu.Tests.csproj --configuration Release --no-restore --logger "trx;LogFileName=test-results.trx"
+
+      - name: Publicar resultados dos testes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: "**/test-results.trx"
+
+      - name: Build da imagem Docker
+        run: docker build -t oficina-api:${{ github.sha }} -f Dockerfile .
+
+      - name: Exportar imagem Docker como artefato
+        run: docker save oficina-api:${{ github.sha }} -o oficina-api-image.tar
+
+      - name: Publicar imagem Docker como artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: oficina-api-image
+          path: oficina-api-image.tar
+          retention-days: 1
+
+  # ─────────────────────────────────────────────────────────
+  # CD — roda no runner self-hosted (sua máquina local)
+  # Carrega a imagem no cluster Kind e aplica os manifestos K8s
+  #
+  # Só executa em push para main/master/homologacao (não em PR),
+  # e só depois que o job de build-and-test passar.
+  # ─────────────────────────────────────────────────────────
+  deploy:
+    name: Deploy no Kubernetes (local)
+    needs: build-and-test
+    if: github.event_name == 'push'
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Baixar imagem Docker buildada no job anterior
+        uses: actions/download-artifact@v4
+        with:
+          name: oficina-api-image
+
+      - name: Carregar imagem no Docker local
+        run: docker load -i oficina-api-image.tar
+
+      - name: Marcar imagem como 'local' (tag usada pelos manifestos K8s)
+        run: docker tag oficina-api:${{ github.sha }} oficina-api:local
+
+      - name: Carregar imagem no cluster Kind
+        run: kind load docker-image oficina-api:local --name oficina-wagyu
+
+      - name: Aplicar manifestos Kubernetes
+        run: |
+          kubectl apply -f k8s/00-namespace.yaml
+          kubectl apply -f k8s/01-configmap.yaml
+          kubectl apply -f k8s/02-secret.yaml
+          kubectl apply -f k8s/04-api-deployment.yaml
+          kubectl apply -f k8s/05-hpa.yaml
+
+      - name: Reiniciar deployment (força uso da imagem nova)
+        run: kubectl -n oficina-wagyu rollout restart deployment oficina-api
+
+      - name: Aguardar rollout concluir
+        run: kubectl -n oficina-wagyu rollout status deployment oficina-api --timeout=180s
+
+      - name: Confirmar pods no ar
+        run: kubectl -n oficina-wagyu get pods -o wide
