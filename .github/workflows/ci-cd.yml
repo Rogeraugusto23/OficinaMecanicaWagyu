@@ -9,7 +9,7 @@ on:
 jobs:
   # ─────────────────────────────────────────────────────────
   # CI — roda em runner padrão da GitHub (nuvem)
-  # Build, testes automatizados e build da imagem Docker
+  # Build, testes automatizados e validação da imagem Docker
   # ─────────────────────────────────────────────────────────
   build-and-test:
     name: Build & Test
@@ -43,22 +43,17 @@ jobs:
           name: test-results
           path: "**/test-results.trx"
 
-      - name: Build da imagem Docker
+      - name: Build da imagem Docker (validação)
         run: docker build -t oficina-api:${{ github.sha }} -f Dockerfile .
-
-      - name: Exportar imagem Docker como artefato
-        run: docker save oficina-api:${{ github.sha }} -o oficina-api-image.tar
-
-      - name: Publicar imagem Docker como artefato
-        uses: actions/upload-artifact@v4
-        with:
-          name: oficina-api-image
-          path: oficina-api-image.tar
-          retention-days: 1
 
   # ─────────────────────────────────────────────────────────
   # CD — roda no runner self-hosted (sua máquina local)
-  # Carrega a imagem no cluster Kind e aplica os manifestos K8s
+  #
+  # Builda a imagem Docker DIRETAMENTE nessa máquina (não baixa
+  # nada pesado da internet — evita depender de download de
+  # artefato entre jobs, que se mostrou pouco confiável na rede
+  # local). Como o Docker já roda aqui, o build reaproveita o
+  # cache de camadas e é rápido.
   #
   # Só executa em push para main/master/homologacao (não em PR),
   # e só depois que o job de build-and-test passar.
@@ -73,16 +68,8 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Baixar imagem Docker buildada no job anterior
-        uses: actions/download-artifact@v4
-        with:
-          name: oficina-api-image
-
-      - name: Carregar imagem no Docker local
-        run: docker load -i oficina-api-image.tar
-
-      - name: Marcar imagem como 'local' (tag usada pelos manifestos K8s)
-        run: docker tag oficina-api:${{ github.sha }} oficina-api:local
+      - name: Build da imagem Docker (local)
+        run: docker build -t oficina-api:local -f Dockerfile .
 
       - name: Carregar imagem no cluster Kind
         run: kind load docker-image oficina-api:local --name oficina-wagyu
