@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using OficinaMecanicaWagyu.Domain.Interfaces;
+using OficinaMecanicaWagyu.Infrastructure.Repositories;
+using OficinaMecanicaWagyu.Application.UseCases.OrdensServico;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,19 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<OficinaDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+// 1.1 Repositórios (Infrastructure implementa contratos do Domain)
+builder.Services.AddScoped<IOrdemServicoRepository, OrdemServicoRepository>();
+
+// 1.2 Use Cases (Application) — um por operação de negócio do módulo OrdensServico
+builder.Services.AddScoped<AbrirOrdemServicoUseCase>();
+builder.Services.AddScoped<ListarOrdensServicoUseCase>();
+builder.Services.AddScoped<ConsultarOrdemServicoUseCase>();
+builder.Services.AddScoped<AvancarStatusUseCase>();
+builder.Services.AddScoped<EnviarOrcamentoUseCase>();
+builder.Services.AddScoped<AprovarOrcamentoUseCase>();
+builder.Services.AddScoped<RejeitarOrcamentoUseCase>();
+builder.Services.AddScoped<AtualizarStatusPorEmailUseCase>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

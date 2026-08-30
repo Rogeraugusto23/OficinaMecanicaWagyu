@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/VQJfmn9lJM=",
+  "dgSpecHash": "sWuidrlqpmE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\roger\\OneDrive\\Área de Trabalho\\CsharpArquivoPrimeiroOficina\\OficinaMecanicaWagyu\\OficinaMecanicaWagyu.csproj",
+  "projectFilePath": "C:\\Users\\roger\\OneDrive\\Área de Trabalho\\FASE 2\\OficinaMecanicaWagyu-fase2-parcial\\OficinaMecanicaWagyu-main\\OficinaMecanicaWagyu\\OficinaMecanicaWagyu.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\roger\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\roger\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",

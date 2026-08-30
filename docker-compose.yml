@@ -21,7 +21,7 @@
       dockerfile: Dockerfile
     container_name: oficina_api
     ports:
-      - "8080:8080"
+      - "8081:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=OficinaMecanicaDB;User Id=sa;Password=Oficina@1234;TrustServerCertificate=True;MultipleActiveResultSets=true

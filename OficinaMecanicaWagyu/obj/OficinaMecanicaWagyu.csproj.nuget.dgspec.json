@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\roger\\OneDrive\\Área de Trabalho\\CsharpArquivoPrimeiroOficina\\OficinaMecanicaWagyu\\OficinaMecanicaWagyu.csproj": {}
+    "C:\\Users\\roger\\OneDrive\\Área de Trabalho\\FASE 2\\OficinaMecanicaWagyu-fase2-parcial\\OficinaMecanicaWagyu-main\\OficinaMecanicaWagyu\\OficinaMecanicaWagyu.csproj": {}
   },
   "projects": {
-    "C:\\Users\\roger\\OneDrive\\Área de Trabalho\\CsharpArquivoPrimeiroOficina\\OficinaMecanicaWagyu\\OficinaMecanicaWagyu.csproj": {
+    "C:\\Users\\roger\\OneDrive\\Área de Trabalho\\FASE 2\\OficinaMecanicaWagyu-fase2-parcial\\OficinaMecanicaWagyu-main\\OficinaMecanicaWagyu\\OficinaMecanicaWagyu.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\roger\\OneDrive\\Área de Trabalho\\CsharpArquivoPrimeiroOficina\\OficinaMecanicaWagyu\\OficinaMecanicaWagyu.csproj",
+        "projectUniqueName": "C:\\Users\\roger\\OneDrive\\Área de Trabalho\\FASE 2\\OficinaMecanicaWagyu-fase2-parcial\\OficinaMecanicaWagyu-main\\OficinaMecanicaWagyu\\OficinaMecanicaWagyu.csproj",
         "projectName": "OficinaMecanicaWagyu",
-        "projectPath": "C:\\Users\\roger\\OneDrive\\Área de Trabalho\\CsharpArquivoPrimeiroOficina\\OficinaMecanicaWagyu\\OficinaMecanicaWagyu.csproj",
+        "projectPath": "C:\\Users\\roger\\OneDrive\\Área de Trabalho\\FASE 2\\OficinaMecanicaWagyu-fase2-parcial\\OficinaMecanicaWagyu-main\\OficinaMecanicaWagyu\\OficinaMecanicaWagyu.csproj",
         "packagesPath": "C:\\Users\\roger\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\roger\\OneDrive\\Área de Trabalho\\CsharpArquivoPrimeiroOficina\\OficinaMecanicaWagyu\\obj\\",
+        "outputPath": "C:\\Users\\roger\\OneDrive\\Área de Trabalho\\FASE 2\\OficinaMecanicaWagyu-fase2-parcial\\OficinaMecanicaWagyu-main\\OficinaMecanicaWagyu\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -30,6 +30,7 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -44,10 +45,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
@@ -94,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
