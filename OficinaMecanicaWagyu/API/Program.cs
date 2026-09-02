@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using OficinaMecanicaWagyu.Domain.Interfaces;
 using OficinaMecanicaWagyu.Infrastructure.Repositories;
 using OficinaMecanicaWagyu.Application.UseCases.OrdensServico;
+using OficinaMecanicaWagyu.Application.UseCases.Clientes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddDbContext<OficinaDbContext>(options =>
 
 // 1.1 Repositórios (Infrastructure implementa contratos do Domain)
 builder.Services.AddScoped<IOrdemServicoRepository, OrdemServicoRepository>();
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 
 // 1.2 Use Cases (Application) — um por operação de negócio do módulo OrdensServico
 builder.Services.AddScoped<AbrirOrdemServicoUseCase>();
@@ -29,6 +31,13 @@ builder.Services.AddScoped<EnviarOrcamentoUseCase>();
 builder.Services.AddScoped<AprovarOrcamentoUseCase>();
 builder.Services.AddScoped<RejeitarOrcamentoUseCase>();
 builder.Services.AddScoped<AtualizarStatusPorEmailUseCase>();
+
+// 1.3 Use Cases (Application) — módulo Clientes
+builder.Services.AddScoped<CriarClienteUseCase>();
+builder.Services.AddScoped<ListarClientesUseCase>();
+builder.Services.AddScoped<ConsultarClienteUseCase>();
+builder.Services.AddScoped<InativarClienteUseCase>();
+builder.Services.AddScoped<ReativarClienteUseCase>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
