@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OficinaMecanicaWagyu")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d7b0f28784204f1b27d97e4608a683aa2729195e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ceada7d7cee78ec893a8241a50e35dea81501be1")]
 [assembly: System.Reflection.AssemblyProductAttribute("OficinaMecanicaWagyu")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OficinaMecanicaWagyu")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
