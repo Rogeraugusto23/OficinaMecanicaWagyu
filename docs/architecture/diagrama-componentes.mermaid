@@ -1,0 +1,66 @@
+graph TB
+    subgraph CLIENTE["Cliente / Usuário"]
+        USR[Cliente da Oficina<br/>navegador / Postman]
+    end
+
+    subgraph AWS["AWS (AWS Academy Learner Lab)"]
+        subgraph GATEWAY["API Gateway"]
+            APIGW["API Gateway HTTP API<br/>POST /auth/cpf"]
+        end
+
+        subgraph SERVERLESS["Function Serverless"]
+            LAMBDA["Lambda: oficina-wagyu-auth-cpf<br/>(Node.js 20)<br/>- Valida CPF<br/>- Consulta status do cliente<br/>- Emite JWT"]
+        end
+
+        subgraph K8S["Cluster Kubernetes (K3s em EC2)"]
+            SVC["Service (NodePort 30080)"]
+            subgraph DEPLOY["Deployment oficina-api (HPA 2-6 réplicas)"]
+                POD1["Pod: oficina-api #1"]
+                POD2["Pod: oficina-api #2"]
+            end
+            CM["ConfigMap"]
+            SEC["Secret<br/>(connection string, JWT secret,<br/>webhook secret)"]
+        end
+
+        subgraph DB["Banco de Dados Gerenciado"]
+            RDS[("RDS SQL Server Express<br/>OficinaMecanicaDB")]
+        end
+
+        subgraph OBS["Observabilidade"]
+            AGENT["Datadog / New Relic Agent"]
+            DASH["Dashboards:<br/>- Volume diário de OS<br/>- Tempo médio por status<br/>- Erros de integração"]
+            ALERT["Alertas de falha"]
+        end
+    end
+
+    subgraph CICD["CI/CD (GitHub Actions)"]
+        GH1["Repo: OficinaMecanicaWagyu"]
+        GH2["Repo: oficina-wagyu-lambda-auth"]
+        GH3["Repo: oficina-wagyu-infra-k8s"]
+        GH4["Repo: oficina-wagyu-infra-database"]
+    end
+
+    USR -- "1 - POST CPF" --> APIGW
+    APIGW -- "invoca" --> LAMBDA
+    LAMBDA -- "2 - consulta Clientes<br/>(existência + Ativo)" --> RDS
+    LAMBDA -- "3 - devolve JWT" --> USR
+
+    USR -- "4 - chamadas às APIs protegidas<br/>Authorization Bearer JWT" --> SVC
+    SVC --> POD1
+    SVC --> POD2
+    POD1 -. lê .-> CM
+    POD1 -. lê .-> SEC
+    POD2 -. lê .-> CM
+    POD2 -. lê .-> SEC
+    POD1 -- "EF Core / SqlClient" --> RDS
+    POD2 -- "EF Core / SqlClient" --> RDS
+
+    POD1 -. logs JSON estruturados .-> AGENT
+    POD2 -. logs JSON estruturados .-> AGENT
+    AGENT --> DASH
+    AGENT --> ALERT
+
+    GH1 -- "build, testa, builda imagem,<br/>deploy no cluster" --> K8S
+    GH2 -- "empacota e faz deploy<br/>da function" --> LAMBDA
+    GH3 -- "terraform apply<br/>(provisiona EC2 + K3s)" --> K8S
+    GH4 -- "terraform apply<br/>(provisiona RDS)" --> RDS
