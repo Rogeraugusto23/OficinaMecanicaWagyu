@@ -10,13 +10,23 @@ namespace OficinaMecanicaWagyu.API
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
+        private readonly IConfiguration _config;
+
+        public AuthController(IConfiguration config)
+        {
+            _config = config;
+        }
+
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest request)
         {
             if (request.Usuario == "admin" && request.Senha == "123456")
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.ASCII.GetBytes("ChaveSecretaOficinaWagyu2026_MuitoLonga");
+                // Mesma chave usada em Program.cs e compartilhada com a Lambda
+                // oficina-wagyu-auth-cpf (ver RFC-003) — configurável via Jwt:Secret.
+                var jwtSecret = _config["Jwt:Secret"] ?? "ChaveSecretaOficinaWagyu2026_MuitoLonga";
+                var key = Encoding.ASCII.GetBytes(jwtSecret);
 
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {

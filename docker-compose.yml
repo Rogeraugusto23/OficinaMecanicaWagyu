@@ -25,7 +25,8 @@
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=OficinaMecanicaDB;User Id=sa;Password=Oficina@1234;TrustServerCertificate=True;MultipleActiveResultSets=true
-      - EmailWebhook__Secret=TROCAR_EM_PRODUCAO_use_o_Secret_do_K8s   # ← adiciona essa linha
+      - EmailWebhook__Secret=TROCAR_EM_PRODUCAO_use_o_Secret_do_K8s
+      - Jwt__Secret=ChaveSecretaOficinaWagyu2026_MuitoLonga   # mesma chave configurada na Lambda oficina-wagyu-auth-cpf (ver RFC-003)
     depends_on:
       sqlserver:
         condition: service_healthy
