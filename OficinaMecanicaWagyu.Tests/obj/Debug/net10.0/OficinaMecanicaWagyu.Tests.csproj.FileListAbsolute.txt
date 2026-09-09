@@ -315,3 +315,13 @@ C:\Users\roger\OneDrive\Área de Trabalho\FASE 2\OficinaMecanicaWagyu-fase2-parc
 C:\Users\roger\OneDrive\Área de Trabalho\FASE 2\OficinaMecanicaWagyu-fase2-parcial\OficinaMecanicaWagyu-main\OficinaMecanicaWagyu.Tests\obj\Debug\net10.0\OficinaMecanicaWagyu.Tests.pdb
 C:\Users\roger\OneDrive\Área de Trabalho\FASE 2\OficinaMecanicaWagyu-fase2-parcial\OficinaMecanicaWagyu-main\OficinaMecanicaWagyu.Tests\obj\Debug\net10.0\OficinaMecanicaWagyu.Tests.genruntimeconfig.cache
 C:\Users\roger\OneDrive\Área de Trabalho\FASE 2\OficinaMecanicaWagyu-fase2-parcial\OficinaMecanicaWagyu-main\OficinaMecanicaWagyu.Tests\obj\Debug\net10.0\ref\OficinaMecanicaWagyu.Tests.dll
+C:\Users\roger\OneDrive\Área de Trabalho\FASE 2\OficinaMecanicaWagyu-fase2-parcial\OficinaMecanicaWagyu-main\OficinaMecanicaWagyu.Tests\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\roger\OneDrive\Área de Trabalho\FASE 2\OficinaMecanicaWagyu-fase2-parcial\OficinaMecanicaWagyu-main\OficinaMecanicaWagyu.Tests\bin\Debug\net10.0\Serilog.dll
+C:\Users\roger\OneDrive\Área de Trabalho\FASE 2\OficinaMecanicaWagyu-fase2-parcial\OficinaMecanicaWagyu-main\OficinaMecanicaWagyu.Tests\bin\Debug\net10.0\Serilog.AspNetCore.dll
+C:\Users\roger\OneDrive\Área de Trabalho\FASE 2\OficinaMecanicaWagyu-fase2-parcial\OficinaMecanicaWagyu-main\OficinaMecanicaWagyu.Tests\bin\Debug\net10.0\Serilog.Extensions.Hosting.dll
+C:\Users\roger\OneDrive\Área de Trabalho\FASE 2\OficinaMecanicaWagyu-fase2-parcial\OficinaMecanicaWagyu-main\OficinaMecanicaWagyu.Tests\bin\Debug\net10.0\Serilog.Extensions.Logging.dll
+C:\Users\roger\OneDrive\Área de Trabalho\FASE 2\OficinaMecanicaWagyu-fase2-parcial\OficinaMecanicaWagyu-main\OficinaMecanicaWagyu.Tests\bin\Debug\net10.0\Serilog.Formatting.Compact.dll
+C:\Users\roger\OneDrive\Área de Trabalho\FASE 2\OficinaMecanicaWagyu-fase2-parcial\OficinaMecanicaWagyu-main\OficinaMecanicaWagyu.Tests\bin\Debug\net10.0\Serilog.Settings.Configuration.dll
+C:\Users\roger\OneDrive\Área de Trabalho\FASE 2\OficinaMecanicaWagyu-fase2-parcial\OficinaMecanicaWagyu-main\OficinaMecanicaWagyu.Tests\bin\Debug\net10.0\Serilog.Sinks.Console.dll
+C:\Users\roger\OneDrive\Área de Trabalho\FASE 2\OficinaMecanicaWagyu-fase2-parcial\OficinaMecanicaWagyu-main\OficinaMecanicaWagyu.Tests\bin\Debug\net10.0\Serilog.Sinks.Debug.dll
+C:\Users\roger\OneDrive\Área de Trabalho\FASE 2\OficinaMecanicaWagyu-fase2-parcial\OficinaMecanicaWagyu-main\OficinaMecanicaWagyu.Tests\bin\Debug\net10.0\Serilog.Sinks.File.dll
