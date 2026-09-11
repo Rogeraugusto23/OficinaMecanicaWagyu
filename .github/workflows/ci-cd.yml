@@ -1,4 +1,4 @@
-name: CI/CD - Oficina Mecânica Wagyu
+name: CI/CD - Oficina Mecânica Wagyu (AWS)
 
 on:
   push:
@@ -8,8 +8,7 @@ on:
 
 jobs:
   # ─────────────────────────────────────────────────────────
-  # CI — roda em runner padrão da GitHub (nuvem)
-  # Build, testes automatizados e validação da imagem Docker
+  # CI — build, testes automatizados
   # ─────────────────────────────────────────────────────────
   build-and-test:
     name: Build & Test
@@ -47,46 +46,56 @@ jobs:
         run: docker build -t oficina-api:${{ github.sha }} -f Dockerfile .
 
   # ─────────────────────────────────────────────────────────
-  # CD — roda no runner self-hosted (sua máquina local)
+  # CD — deploy automático direto no cluster K3s da AWS, via SSH.
   #
-  # Builda a imagem Docker DIRETAMENTE nessa máquina (não baixa
-  # nada pesado da internet — evita depender de download de
-  # artefato entre jobs, que se mostrou pouco confiável na rede
-  # local). Como o Docker já roda aqui, o build reaproveita o
-  # cache de camadas e é rápido.
+  # Diferente da abordagem usada no ambiente local (Fase 2), aqui NÃO é
+  # necessário um runner self-hosted: a instância EC2 tem IP público
+  # acessível pela internet, então um runner padrão da GitHub (hospedado
+  # na nuvem da própria GitHub) consegue se conectar via SSH normalmente.
   #
-  # Só executa em push para main/master/homologacao (não em PR),
-  # e só depois que o job de build-and-test passar.
+  # Divisão de responsabilidade entre os repositórios:
+  # - oficina-wagyu-infra-k8s: provisiona o cluster (Terraform) e aplica os
+  #   objetos Kubernetes que mudam raramente (Namespace, ConfigMap, Secret,
+  #   Deployment/Service/HPA na primeira vez).
+  # - Este repositório (aplicação): a cada push, builda a imagem nova,
+  #   carrega no cluster e reinicia o rollout — sem precisar reaplicar
+  #   manifestos que não mudaram.
+  #
+  # Só executa em push para main/master/homologacao (não em PR), e só
+  # depois que o job de build-and-test passar.
   # ─────────────────────────────────────────────────────────
   deploy:
-    name: Deploy no Kubernetes (local)
+    name: Deploy no Kubernetes (AWS)
     needs: build-and-test
     if: github.event_name == 'push'
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Build da imagem Docker (local)
-        run: docker build -t oficina-api:local -f Dockerfile .
+      - name: Build da imagem Docker
+        run: docker build -t oficina-api:latest -f Dockerfile .
 
-      - name: Carregar imagem no cluster Kind
-        run: kind load docker-image oficina-api:local --name oficina-wagyu
-
-      - name: Aplicar manifestos Kubernetes
+      - name: Configurar chave SSH
         run: |
-          kubectl apply -f k8s/00-namespace.yaml
-          kubectl apply -f k8s/01-configmap.yaml
-          kubectl apply -f k8s/02-secret.yaml
-          kubectl apply -f k8s/04-api-deployment.yaml
-          kubectl apply -f k8s/05-hpa.yaml
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/ec2_key.pem
+          chmod 600 ~/.ssh/ec2_key.pem
+          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Reiniciar deployment (força uso da imagem nova)
-        run: kubectl -n oficina-wagyu rollout restart deployment oficina-api
+      - name: Enviar imagem para a EC2 e importar no K3s
+        run: |
+          docker save oficina-api:latest | gzip | ssh -i ~/.ssh/ec2_key.pem ubuntu@${{ secrets.EC2_HOST }} "gunzip | sudo k3s ctr images import -"
+
+      - name: Reiniciar o Deployment (força uso da imagem nova)
+        run: |
+          ssh -i ~/.ssh/ec2_key.pem ubuntu@${{ secrets.EC2_HOST }} "sudo k3s kubectl rollout restart deployment oficina-api -n oficina-wagyu"
 
       - name: Aguardar rollout concluir
-        run: kubectl -n oficina-wagyu rollout status deployment oficina-api --timeout=180s
+        run: |
+          ssh -i ~/.ssh/ec2_key.pem ubuntu@${{ secrets.EC2_HOST }} "sudo k3s kubectl rollout status deployment oficina-api -n oficina-wagyu --timeout=180s"
 
       - name: Confirmar pods no ar
-        run: kubectl -n oficina-wagyu get pods -o wide
+        run: |
+          ssh -i ~/.ssh/ec2_key.pem ubuntu@${{ secrets.EC2_HOST }} "sudo k3s kubectl get pods -n oficina-wagyu -o wide"
