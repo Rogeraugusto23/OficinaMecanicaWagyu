@@ -7,6 +7,7 @@ using OficinaMecanicaWagyu.Domain.Entities;
 using OficinaMecanicaWagyu.Domain.Enums;
 using OficinaMecanicaWagyu.Infrastructure.Data;
 using OficinaMecanicaWagyu.Infrastructure.Repositories;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace OficinaMecanicaWagyu.Tests;
 
@@ -75,7 +76,7 @@ public class OrdensServicoUseCasesTests
         await repository.AdicionarAsync(ordem);
         await repository.SalvarAlteracoesAsync();
 
-        var useCase = new AprovarOrcamentoUseCase(repository);
+        var useCase = new AprovarOrcamentoUseCase(repository, NullLogger<AprovarOrcamentoUseCase>.Instance);
         var resultado = await useCase.ExecutarAsync(ordem.Id);
 
         resultado.Sucesso.Should().BeTrue();
@@ -93,7 +94,7 @@ public class OrdensServicoUseCasesTests
         await repository.AdicionarAsync(ordem);
         await repository.SalvarAlteracoesAsync();
 
-        var useCase = new AprovarOrcamentoUseCase(repository);
+        var useCase = new AprovarOrcamentoUseCase(repository, NullLogger<AprovarOrcamentoUseCase>.Instance);
         var resultado = await useCase.ExecutarAsync(ordem.Id);
 
         resultado.Sucesso.Should().BeFalse();
@@ -114,7 +115,7 @@ public class OrdensServicoUseCasesTests
         await repository.AdicionarAsync(ordem);
         await repository.SalvarAlteracoesAsync();
 
-        var useCase = new RejeitarOrcamentoUseCase(repository);
+        var useCase = new RejeitarOrcamentoUseCase(repository, NullLogger<RejeitarOrcamentoUseCase>.Instance);
         var resultado = await useCase.ExecutarAsync(ordem.Id);
 
         resultado.Sucesso.Should().BeTrue();
@@ -126,7 +127,7 @@ public class OrdensServicoUseCasesTests
     {
         using var context = CriarContexto();
         var repository = new OrdemServicoRepository(context);
-        var useCase = new AtualizarStatusPorEmailUseCase(repository);
+        var useCase = new AtualizarStatusPorEmailUseCase(repository, NullLogger<AtualizarStatusPorEmailUseCase>.Instance);
 
         var resultado = await useCase.ExecutarAsync(new AtualizacaoStatusEmailInput
         {
@@ -149,7 +150,7 @@ public class OrdensServicoUseCasesTests
         await repository.AdicionarAsync(ordem);
         await repository.SalvarAlteracoesAsync();
 
-        var useCase = new AtualizarStatusPorEmailUseCase(repository);
+        var useCase = new AtualizarStatusPorEmailUseCase(repository, NullLogger<AtualizarStatusPorEmailUseCase>.Instance);
         var resultado = await useCase.ExecutarAsync(new AtualizacaoStatusEmailInput
         {
             NumeroOS = ordem.NumeroOS,
@@ -171,7 +172,7 @@ public class OrdensServicoUseCasesTests
         await repository.AdicionarAsync(ordem);
         await repository.SalvarAlteracoesAsync();
 
-        var useCase = new AtualizarStatusPorEmailUseCase(repository);
+        var useCase = new AtualizarStatusPorEmailUseCase(repository, NullLogger<AtualizarStatusPorEmailUseCase>.Instance);
         var resultado = await useCase.ExecutarAsync(new AtualizacaoStatusEmailInput
         {
             NumeroOS = ordem.NumeroOS,

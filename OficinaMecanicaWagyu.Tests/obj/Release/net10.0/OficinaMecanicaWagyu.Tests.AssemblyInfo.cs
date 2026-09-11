@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OficinaMecanicaWagyu.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ceada7d7cee78ec893a8241a50e35dea81501be1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+98d8b95d9f73150c17221db3f0b6ae572af6ee6b")]
 [assembly: System.Reflection.AssemblyProductAttribute("OficinaMecanicaWagyu.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OficinaMecanicaWagyu.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

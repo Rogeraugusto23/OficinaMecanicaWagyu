@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using OficinaMecanicaWagyu.Application.Common;
 using OficinaMecanicaWagyu.Application.DTOs.OrdensServico;
 using OficinaMecanicaWagyu.Domain.Enums;
@@ -8,10 +9,12 @@ namespace OficinaMecanicaWagyu.Application.UseCases.OrdensServico;
 public class AprovarOrcamentoUseCase
 {
     private readonly IOrdemServicoRepository _repository;
+    private readonly ILogger<AprovarOrcamentoUseCase> _logger;
 
-    public AprovarOrcamentoUseCase(IOrdemServicoRepository repository)
+    public AprovarOrcamentoUseCase(IOrdemServicoRepository repository, ILogger<AprovarOrcamentoUseCase> logger)
     {
         _repository = repository;
+        _logger = logger;
     }
 
     public async Task<OperationResult<StatusAtualizadoOutput>> ExecutarAsync(Guid id)
@@ -21,12 +24,23 @@ public class AprovarOrcamentoUseCase
             return OperationResult<StatusAtualizadoOutput>.Falha(TipoErro.NaoEncontrado, "Ordem de serviço não encontrada.");
 
         if (ordem.Status != StatusOrdemServico.AguardandoAprovacao)
+        {
+            _logger.LogWarning(
+                "OrdemServicoTransicaoFalhou {NumeroOS} {StatusAnterior} {Motivo}",
+                ordem.NumeroOS, ordem.Status, "Esperava AguardandoAprovacao");
             return OperationResult<StatusAtualizadoOutput>.Falha(
                 TipoErro.OperacaoInvalida,
                 $"A OS precisa estar Aguardando Aprovação. Status atual: {ordem.Status}.");
+        }
 
+        var statusAnterior = ordem.Status;
         ordem.AvancarStatus(); // AguardandoAprovacao → EmExecucao
         await _repository.SalvarAlteracoesAsync();
+
+        var tempoDecorridoMinutos = (DateTime.UtcNow - ordem.DataAbertura).TotalMinutes;
+        _logger.LogInformation(
+            "OrdemServicoStatusAlterado {NumeroOS} {StatusAnterior} {StatusAtual} {TempoDecorridoMinutos}",
+            ordem.NumeroOS, statusAnterior, ordem.Status, tempoDecorridoMinutos);
 
         return OperationResult<StatusAtualizadoOutput>.Ok(new StatusAtualizadoOutput
         {
