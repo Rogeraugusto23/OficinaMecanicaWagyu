@@ -1,87 +1,98 @@
-# 🔧 Oficina Mecânica Wagyu
+# Oficina Mecânica Wagyu — Aplicação Principal
 
-Sistema de gestão de ordens de serviço desenvolvido como projeto de Pós-Graduação em Arquitetura de Software.
+API de gestão de Ordens de Serviço, Clientes, Veículos e Peças de uma
+oficina mecânica. Projeto de Tech Challenge (Pós-Tech FIAP), evoluído em 3
+fases: monolito inicial (Fase 1) → containerização e Kubernetes local
+(Fase 2) → arquitetura em nuvem com autenticação serverless (Fase 3).
 
-A ideia é simples: digitalizar o fluxo de uma oficina mecânica, desde a abertura da OS até a entrega do veículo ao cliente.
+## Repositórios do projeto
 
----
+Este é o repositório da **aplicação principal**, que roda em Kubernetes. Os
+demais componentes da arquitetura vivem em repositórios próprios:
 
-## ▶️ Rodando o projeto
+| Repositório | Responsabilidade |
+|---|---|
+| [`OficinaMecanicaWagyu`](.) (este) | API principal, rodando em Kubernetes |
+| [`oficina-wagyu-lambda-auth`](https://github.com/Rogeraugusto23/oficina-wagyu-lambda-auth) | Function Serverless de autenticação via CPF + API Gateway |
+| [`oficina-wagyu-infra-k8s`](https://github.com/Rogeraugusto23/oficina-wagyu-infra-k8s) | Terraform do cluster Kubernetes (K3s em EC2) |
+| [`oficina-wagyu-infra-database`](https://github.com/Rogeraugusto23/oficina-wagyu-infra-database) | Terraform do banco de dados gerenciado (RDS) |
 
-A forma mais fácil é com Docker. Com um único comando você sobe a API e o banco de dados:
+## Arquitetura
+
+Ver a documentação completa em [`docs/architecture/`](docs/architecture/):
+- [Diagrama de Componentes](docs/architecture/diagrama-componentes.md)
+- [Diagrama de Sequência](docs/architecture/diagrama-sequencia.md) (autenticação via CPF + abertura de OS)
+- [Modelo de dados e diagrama ER](docs/architecture/modelo-dados-er.md)
+
+Decisões arquiteturais documentadas em [`docs/adr/`](docs/adr/) e
+[`docs/rfcs/`](docs/rfcs/).
+
+## Tecnologias
+
+- .NET 10 / ASP.NET Core Web API
+- Entity Framework Core (SQL Server)
+- Clean Architecture (módulos `OrdensServico` e `Clientes` — ver ADR-002)
+- Serilog (logging estruturado em JSON, com correlação por requisição)
+- JWT Bearer (segredo compartilhado com a Lambda de autenticação — ver RFC-003)
+- Docker, Kubernetes (K3s), Terraform
+- GitHub Actions (CI/CD)
+- xUnit + FluentAssertions (testes automatizados)
+
+## Autenticação
+
+Duas formas de obter um token JWT:
+
+1. **Via CPF** (Fase 3, fluxo principal para clientes): `POST` no endpoint da
+   Lambda (repositório `oficina-wagyu-lambda-auth`) com `{ "cpf": "..." }`.
+2. **Via usuário/senha** (legado da Fase 1/2, uso administrativo):
+   `POST /api/Auth/login` com `usuario`/`senha`.
+
+Ambos emitem um token compatível, aceito nas mesmas rotas protegidas.
+
+## Executando localmente
 
 ```bash
 docker compose up --build
 ```
 
-Pronto. Acesse o Swagger em **http://localhost:8080/swagger** e explore os endpoints.
+Acesse `http://localhost:8080/swagger`.
 
-Para parar tudo:
-```bash
-docker compose down
-```
+## Deploy em Kubernetes
 
----
+Ver o guia completo no repositório
+[`oficina-wagyu-infra-k8s`](https://github.com/Rogeraugusto23/oficina-wagyu-infra-k8s).
+Resumo: o cluster e os objetos base (Namespace, ConfigMap, Secret,
+Deployment, Service, HPA) são provisionados a partir daquele repositório;
+este repositório cuida apenas do build/deploy contínuo da imagem da
+aplicação via `.github/workflows/ci-cd.yml`.
 
-## 🖥️ Prefere rodar sem Docker?
+### Pipeline de CI/CD
 
-Sem problema. Você vai precisar do .NET 10 e do SQL Server (ou LocalDB) instalados.
+- **Build & Test**: roda em runner padrão da GitHub — build, testes
+  automatizados, validação da imagem Docker.
+- **Deploy**: também roda em runner padrão da GitHub (não precisa de runner
+  self-hosted) — conecta via SSH na instância EC2 pública, importa a
+  imagem nova no K3s e reinicia o rollout automaticamente a cada push na
+  `main`.
 
-```bash
-cd OficinaMecanicaWagyu
-dotnet restore
-dotnet ef database update
-dotnet run
-```
+Configuração necessária (GitHub Secrets): `EC2_HOST` (IP público da EC2) e
+`EC2_SSH_KEY` (chave privada SSH).
 
----
-
-## 🏗️ Como o projeto está organizado
-
-Optei por um monolito em camadas, que é o suficiente para um MVP e mais fácil de evoluir:
-
-- **API** → endpoints REST, autenticação JWT e documentação Swagger
-- **Domain** → coração do sistema: entidades, regras de negócio, validações
-- **Infrastructure** → banco de dados com Entity Framework Core e migrations
-
----
-
-## 🗄️ Por que SQL Server?
-
-Escolhi o SQL Server pela integração nativa com o Entity Framework Core e por ser o banco mais familiar no ecossistema .NET. Para desenvolvimento uso o LocalDB (zero configuração), e no Docker sobe um container com SQL Server 2022.
-
----
-
-## 🔐 Como autenticar
-
-A API administrativa é protegida por JWT. O fluxo é:
-
-1. Faça login em `POST /api/Auth/login`
-Usuario: admin
-Senha: 123456
-2. Copie o token da resposta
-3. No Swagger, clique em **Authorize** e cole: `Bearer {seu_token}`
-
-O endpoint de consulta pública (`GET /api/consulta/{numeroOS}`) não precisa de autenticação — ele foi feito para o cliente final acompanhar a OS pelo número.
-
----
-
-## ✅ O que o sistema faz
-
-- Abre e gerencia Ordens de Serviço
-- Valida CPF/CNPJ dos clientes e placa dos veículos (padrão antigo e Mercosul)
-- Calcula o orçamento automaticamente com base nos serviços e peças
-- Controla o estoque de peças e avisa quando está abaixo do mínimo
-- Acompanha o status da OS do recebimento até a entrega
-- Permite que o cliente consulte o andamento da OS sem precisar de login
-
----
-
-## 🧪 Testes
+## Testes
 
 ```bash
 cd OficinaMecanicaWagyu.Tests
 dotnet test
 ```
 
-28 testes unitários cobrindo as regras de negócio principais: cálculo de orçamento, validação de documentos, controle de estoque e fluxo de status da OS.
+## Collection de API
+
+Swagger interativo disponível em `/swagger` em qualquer ambiente onde a
+aplicação estiver rodando (ex: `http://localhost:8080/swagger` localmente).
+
+## Observabilidade
+
+Estratégia de observabilidade baseada em logs estruturados (Serilog +
+correlação por requisição) e integração de infraestrutura Kubernetes via
+New Relic — ver [ADR-005](docs/adr/ADR-005-observabilidade-new-relic.md) e
+o diretório `observability/` (Terraform dos dashboards e alertas).
